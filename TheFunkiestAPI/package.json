@@ -1,0 +1,13 @@
+{
+  "name": "thefunkiestapi",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.11.5"
+  },
+  "devDependencies": {}
+}
