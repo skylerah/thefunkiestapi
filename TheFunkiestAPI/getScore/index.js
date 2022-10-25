@@ -15,8 +15,7 @@ module.exports = async function (context, req) {
     let querySpec = {
         query: "SELECT * FROM Scores s WHERE s.name =" + "'" + req.query.name + "'"
     };
-    
-    console.log(req.body);
+
     const { resources: items } = await container.items
         .query(querySpec)
         .fetchAll();
@@ -24,24 +23,12 @@ module.exports = async function (context, req) {
     let scoreObj = items[0];
     let scoreId = scoreObj.id
     let scoreValue = scoreObj.score
-    let newScoreValue = req.body.numValue
-
-   scoreObj.score = newScoreValue
-
-    
-    const { resource: updatedItem } = await container
-        .item(scoreId)
-        .replace(scoreObj);
-
-    const responseMessage = "You have changed the score by +/- 1!"
-    
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: {data: newScoreValue },
+        body: { data: scoreValue },
         headers: {
             'Content-Type': 'application/json'
         }
-
     };
 }
